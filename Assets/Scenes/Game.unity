@@ -637,8 +637,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dab745ebb987cfa4aaad69381dcdc744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwableItem: {fileID: 5912755754308039676, guid: f87676e8f1942184dbcc1b99762e4b82,
-    type: 3}
+  throwableItems:
+  - {fileID: 5912755754308039676, guid: f87676e8f1942184dbcc1b99762e4b82, type: 3}
+  - {fileID: 5912755754308039676, guid: 0b133d52ffeddb1469ee0565be2a7811, type: 3}
+  - {fileID: 5912755754308039676, guid: 64fd3bfdc62558741bda15ae6f20e01e, type: 3}
   brokerHolder: {fileID: 863766771}
 --- !u!64 &837632667
 MeshCollider:
@@ -1244,6 +1246,7 @@ GameObject:
   - component: {fileID: 1496504211}
   - component: {fileID: 1496504210}
   - component: {fileID: 1496504209}
+  - component: {fileID: 1496504213}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -1326,6 +1329,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496504213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496504208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d89192e2e78d4c4194ecf48015902fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokerHolder: {fileID: 863766771}
 --- !u!1 &1537618511
 GameObject:
   m_ObjectHideFlags: 0

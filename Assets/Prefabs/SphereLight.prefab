@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5375134323844286346}
   - component: {fileID: 2255996085483511057}
   - component: {fileID: 8607928610417985735}
-  - component: {fileID: 338070568719795444}
+  - component: {fileID: 1169588529144341475}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: SphereLight
   m_TagString: ThrownObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5912755754308039676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.12, y: 0, z: -3.61}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a5e8065b1cec3494cb3688a3f5a9bbc9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,7 +111,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &338070568719795444
+--- !u!114 &1169588529144341475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,9 +123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95aa6dc11f4d2f34984d89034e777c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1
-  relativeFrequency: 20
-  forceSide: 80
-  forceUpHigh: 290
+  mass: 0.4
+  relativeFrequency: 1
+  forceSide: 50
+  forceUpHigh: 140
   forceUpLow: 0
-  forceBack: 300
+  forceBack: 200
