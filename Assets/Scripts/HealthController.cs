@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthController : MonoBehaviour
@@ -12,14 +10,15 @@ public class HealthController : MonoBehaviour
     void Start()
     {
         textbox = gameObject.GetComponent<Text>();
-        textbox.transform.position = new Vector3(Screen.width - 90, Screen.height - 30);
         health = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(health > 0)
+        textbox.transform.position = new Vector3(Screen.width - 120, Screen.height - 50);
+
+        if (health > 0)
         {
             textbox.color = Color.white;
             textbox.text = "HEALTH: " + health;

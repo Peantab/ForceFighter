@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 0.4
-  relativeFrequency: 1
+  relativeFrequency: 5
   forceSide: 50
   forceUpHigh: 140
   forceUpLow: 0

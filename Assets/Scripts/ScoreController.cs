@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
@@ -16,7 +14,6 @@ public class ScoreController : MonoBehaviour
     void Start()
     {
         textbox = gameObject.GetComponent<Text>();
-        textbox.transform.position = new Vector3(90, Screen.height - 30);
         healthController = health.GetComponent<HealthController>();
         score = 0;
     }
@@ -24,6 +21,8 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        textbox.transform.position = new Vector3(120, Screen.height - 50);
+
         if (healthController.IsAlive())
         {
             textbox.color = Color.white;
