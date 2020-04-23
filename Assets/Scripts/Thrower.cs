@@ -100,7 +100,7 @@ public class Thrower : MonoBehaviour
 
     private void ThrowItem(ImportedItem item, ScreenSegment segment)
     {
-        GameObject spawnedObject = Instantiate(item.gameObject, spawnPoint, Quaternion.identity);
+        GameObject spawnedObject = Instantiate(item.gameObject, spawnPoint, transform.rotation);
 
         broker.Register(segment, spawnedObject);
 
