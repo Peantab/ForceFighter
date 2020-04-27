@@ -228,6 +228,12 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 70395019}
+    - target: {fileID: 537867189834510296, guid: 117a3b41344585d4598181fc8a463106,
+        type: 3}
+      propertyPath: effect
+      value: 
+      objectReference: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9,
+        type: 3}
     - target: {fileID: 537867189834510297, guid: 117a3b41344585d4598181fc8a463106,
         type: 3}
       propertyPath: m_Name
@@ -1203,6 +1209,7 @@ MonoBehaviour:
   destructionType: 0
   brokerHolder: {fileID: 863766771}
   healthText: {fileID: 0}
+  effect: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 3}
 --- !u!1 &1496504208
 GameObject:
   m_ObjectHideFlags: 0
