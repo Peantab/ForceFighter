@@ -7,6 +7,7 @@ public class ObjectDestroyer : MonoBehaviour
     public DestructionType destructionType = DestructionType.FAILURE;
     public GameObject brokerHolder;
     public GameObject healthText;
+    public GameObject effect;
 
     private Broker broker;
     private HealthController health;
@@ -15,6 +16,7 @@ public class ObjectDestroyer : MonoBehaviour
     void Start()
     {
         broker = brokerHolder.GetComponent<Broker>();
+
         if (destructionType == DestructionType.FAILURE)
         {
             health = healthText.GetComponent<HealthController>();
@@ -32,9 +34,19 @@ public class ObjectDestroyer : MonoBehaviour
         GameObject thrownObject = collision.gameObject;
         if (thrownObject.CompareTag("ThrownObject"))
         {
-            if (destructionType == DestructionType.FAILURE) health.AcceptDamage(20);
             broker.Deregister(thrownObject);
             Destroy(thrownObject);
+
+            if (destructionType == DestructionType.FAILURE)
+            {
+                health.AcceptDamage(20);
+            }
+            else
+            {
+                var particleSystem = effect.GetComponent<ParticleSystem>();
+                GameObject gameObject = Instantiate(effect, thrownObject.transform.position, Quaternion.identity);
+                Destroy(gameObject, particleSystem.main.duration);
+            }
         }
     }
 
