@@ -34,9 +34,6 @@ public class ObjectDestroyer : MonoBehaviour
         GameObject thrownObject = collision.gameObject;
         if (thrownObject.CompareTag("ThrownObject"))
         {
-            broker.Deregister(thrownObject);
-            Destroy(thrownObject);
-
             if (destructionType == DestructionType.FAILURE)
             {
                 health.AcceptDamage(20);
@@ -44,9 +41,13 @@ public class ObjectDestroyer : MonoBehaviour
             else
             {
                 var particleSystem = effect.GetComponent<ParticleSystem>();
-                GameObject gameObject = Instantiate(effect, thrownObject.transform.position, Quaternion.identity);
+                Vector3 justBefore = new Vector3(thrownObject.transform.position.x, thrownObject.transform.position.y, thrownObject.transform.position.z - 0.1f);
+                GameObject gameObject = Instantiate(effect, justBefore, Quaternion.identity);
                 Destroy(gameObject, particleSystem.main.duration);
             }
+
+            broker.Deregister(thrownObject);
+            Destroy(thrownObject);
         }
     }
 
