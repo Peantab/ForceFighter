@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreController : MonoBehaviour
 {
     public GameObject health;
 
     private Text textbox;
-    private int score;
+    static public int score = 0;
     private int fixedUpdateModuloCounter = 0;
     private HealthController healthController;
 
@@ -32,6 +33,7 @@ public class ScoreController : MonoBehaviour
         {
             textbox.color = Color.green;
             textbox.text = "SCORE: " + score;
+            SceneManager.LoadScene("GameOver");
         }
 
     }
