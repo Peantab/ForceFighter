@@ -9,6 +9,7 @@ public class GameOver : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
         GetComponent<TMPro.TextMeshProUGUI>().text = "Score: " + ScoreController.score.ToString();
     }
 
