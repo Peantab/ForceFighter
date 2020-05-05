@@ -22,7 +22,7 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textbox.transform.position = new Vector3(120, Screen.height - 50);
+        textbox.transform.position = new Vector3(220, Screen.height - 50);
 
         if (healthController.IsAlive())
         {

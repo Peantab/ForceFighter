@@ -24,7 +24,7 @@ public class HealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textbox.transform.position = new Vector3(Screen.width - 120, Screen.height - 50);
+        textbox.transform.position = new Vector3(Screen.width - 160, Screen.height - 50);
 
         if (health > 0)
         {
