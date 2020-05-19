@@ -383,6 +383,7 @@ GameObject:
   - component: {fileID: 602541903}
   - component: {fileID: 602541905}
   - component: {fileID: 602541906}
+  - component: {fileID: 602541907}
   m_Layer: 5
   m_Name: Cursor
   m_TagString: Untagged
@@ -452,7 +453,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 602541901}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 739779babd7de184cbff5e84b23e28d5, type: 3}
   m_Name: 
@@ -470,6 +471,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brokerHolder: {fileID: 863766771}
+--- !u!114 &602541907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602541901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff36aff052241be9242ee4f129d8cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Surface: {fileID: 0}
+  faces: {fileID: 4900000, guid: 6b25a0e0227666d40b282be78b80780c, type: 3}
+  eyes: {fileID: 4900000, guid: a1203bc8d0ab3b5469c52993e6874d7a, type: 3}
+  shapes: {fileID: 4900000, guid: 389febea1da6449f5bdde80ea0b7d9d6, type: 3}
 --- !u!1 &699636145
 GameObject:
   m_ObjectHideFlags: 0
