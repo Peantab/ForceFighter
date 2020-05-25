@@ -2,8 +2,6 @@ namespace OpenCvSharp
 {
     using System;
     using System.Collections.Generic;
-    using OpenCvSharp;
-    using UnityEngine.UI;
 
     /// <summary>
     /// Array utilities
@@ -49,7 +47,6 @@ namespace OpenCvSharp
         protected ShapePredictor shapeFaces = null;
 
         protected Mat processingImage = null;
-        protected Double appliedFactor = 1.0;
         protected bool cutFalsePositivesWithEyesSearch = false;
 
         /// <summary>
@@ -151,37 +148,8 @@ namespace OpenCvSharp
 
             // convert and prepare
             Image = MatFromTexture(texture, texParams);
-            double downscale = 1920;
-
-            if (downscale < Image.Width)
-            {
-                // compute aspect-respective scaling factor
-                int w = Image.Width;
-                int h = Image.Height;
-
-                // scale by max side
-                if (w >= h)
-                {
-                    appliedFactor = downscale / (double) w;
-                    w = (int) downscale;
-                    h = (int) (h * appliedFactor + 0.5);
-                }
-                else
-                {
-                    appliedFactor = downscale / (double) h;
-                    h = (int) downscale;
-                    w = (int) (w * appliedFactor + 0.5);
-                }
-
-                // resize
-                processingImage = new Mat();
-                Cv2.Resize(Image, processingImage, new Size(w, h));
-            }
-            else
-            {
-                appliedFactor = 1.0;
-                processingImage = Image;
-            }
+            
+            processingImage = Image;
         }
 
         /// <summary>
@@ -214,6 +182,7 @@ namespace OpenCvSharp
             int facesCount = 0;
             Point[] maxFace = lastFace;
             double maxFaceSize = 0;
+
             for (int i = 0; i < rawFaces.Length; ++i)
             {
                 Rect faceRect = rawFaces[i];
@@ -228,10 +197,10 @@ namespace OpenCvSharp
                     }
 
                     // get face object
-                    OpenCvSharp.Demo.DetectedFace face = null;
+                    Demo.DetectedFace face = null;
                     if (Faces.Count < i + 1)
                     {
-                        face = new OpenCvSharp.Demo.DetectedFace(DataStabilizer, faceRect);
+                        face = new Demo.DetectedFace(DataStabilizer, faceRect);
                         Faces.Add(face);
                     }
                     else

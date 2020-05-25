@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using OpenCvSharp;
 using OpenCvSharp.Demo;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace OpenCvSharp
 {
@@ -59,13 +56,21 @@ namespace OpenCvSharp
         }
 
 
-        private Rect getEyeBoundingBox(IList<Point> face, int offset, int margin = 3)
+        private Rect getEyeBoundingBox(IList<Point> face, int offset, int width, int height, int margin = 3)
         {
             var x1 = face[36 + offset].X;
             var x2 = face[39 + offset].X;
             var y1 = face[38 + offset].Y;
-            var y2 = face[42 + offset].Y;
-            return new Rect(x1 - margin, y1 - margin, x2 - x1 + margin, y2 - y1 + margin);
+            var y2 = face[40 + offset].Y;
+
+            int paddedY1 = Math.Max(y1 - margin, 0);
+
+            int roiHeight = Math.Abs(y2 - y1) + 2 * Math.Abs(paddedY1 - y1);
+            if (paddedY1 + roiHeight > height)
+            {
+                roiHeight = height - paddedY1;
+            }
+            return new Rect(x1, paddedY1, Math.Abs(x2 - x1), roiHeight);
         }
 
         private Point getEyePosition(Mat eye)
@@ -73,7 +78,7 @@ namespace OpenCvSharp
             Point result;
             Cv2.Blur(eye, eye, new Size(5, 5));
             Cv2.Laplacian(eye, eye, MatType.CV_64F);
-            Cv2.MinMaxLoc(eye,out _ , out _,  out result, out _ );
+            Cv2.MinMaxLoc(eye, out _, out _, out result, out _);
             return result;
         }
 
@@ -97,9 +102,12 @@ namespace OpenCvSharp
                 Cv2.CvtColor(processor.Image, gray, ColorConversionCodes.BGR2GRAY);
 
                 var c = new Point(Screen.width / 2, Screen.height / 2);
-                
-                var leftEye = new Mat(gray, getEyeBoundingBox(face, 0)); // x,y,w,h
-                var rightEye = new Mat(gray, getEyeBoundingBox(face, 6));
+
+                int width = input.width;
+                int height = input.height;
+
+                var leftEye = new Mat(gray, getEyeBoundingBox(face, 0, width, height)); // x,y,w,h
+                var rightEye = new Mat(gray, getEyeBoundingBox(face, 6, width, height));
                 
                 var leftEyeCenter = new Point(leftEye.Width / 2, leftEye.Height / 2);
                 var rightEyeCenter = new Point(rightEye.Width / 2, rightEye.Height / 2);
@@ -111,8 +119,9 @@ namespace OpenCvSharp
                 Point rightVector = new Point(rightPupilPosition.X - rightEyeCenter.X, leftPupilPosition.Y - leftEyeCenter.Y);
 
                 var pos = 50;
-                Debug.Log(getCoordsQuater(leftVector + rightVector));
-                switch (getCoordsQuater(leftVector + rightVector))
+                String coordsQuarter = getCoordsQuater(leftVector + rightVector);
+                Debug.Log(coordsQuarter);
+                switch (coordsQuarter)
                 {
                     case "LU":
                         this.transform.position = new Vector3(c.X + pos, c.Y + pos, 0);
